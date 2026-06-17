@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1",
+    "title": "Your First Book Title",
+    "pages": 100,
+    "tag": "Bestseller",
+    "level": "Beginner",
+    "bg": "#FFF3E0",
+    "accent": "#135E2D",
+    "emoji": "💰",
+    "description": "Short description of your book.",
+    "author": "Easy Finance",
+    "readTime": "3 hrs",
+    "coverUrl": "",
+    "content": "Chapter 1: Getting Started\n\nThis is where you type the actual reading text of your first chapter. Keep writing your text here.\n\nChapter 2: Saving Money\n\nThis is where your second chapter starts. The app will automatically split pages when it sees the word 'Chapter'."
+  }
+]
