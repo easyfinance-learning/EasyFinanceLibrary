@@ -371,6 +371,20 @@ export default function ReaderScreen() {
           {lines.map((line, lineIdx) => {
             const trimmed = line.trim();
             
+            // Handle H1: # Heading Title, or exact match for "Table of Contents", or starts with "Chapter \d+"
+            const isH1Markdown = trimmed.startsWith('# ');
+            const isTOC = trimmed.toLowerCase() === 'table of contents';
+            const isChapterTitle = /^chapter \d+/i.test(trimmed);
+            
+            if (isH1Markdown || isTOC || isChapterTitle) {
+              const headingText = isH1Markdown ? trimmed.replace(/^#\s+/, '') : trimmed;
+              return (
+                <Text key={lineIdx} style={styles.heading1}>
+                  {headingText}
+                </Text>
+              );
+            }
+            
             // Handle H2: ## Heading Title
             if (trimmed.startsWith('## ')) {
               const headingText = trimmed.replace(/^##\s+/, '');
@@ -1030,6 +1044,14 @@ const styles = StyleSheet.create({
     marginTop: 6,
     textAlign: 'center',
     fontStyle: 'italic',
+  },
+  heading1: {
+    fontSize: 22,
+    fontWeight: '900',
+    color: Theme.green.primary,
+    marginTop: 10,
+    marginBottom: 20,
+    lineHeight: 28,
   },
   heading2: {
     fontSize: 18,
