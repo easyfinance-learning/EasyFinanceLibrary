@@ -59,7 +59,13 @@ export default function BookDetailScreen() {
         {/* ── Visual Section ── */}
         <View style={styles.coverSection}>
           <View style={styles.coverShadow}>
-            <Image source={{ uri: item.coverUrl }} style={styles.coverImage} />
+            {item.coverUrl && item.coverUrl.startsWith('http') ? (
+              <Image source={{ uri: item.coverUrl }} style={styles.coverImage} />
+            ) : (
+              <View style={[styles.coverImage, { backgroundColor: item.bg || '#EAF5EE', alignItems: 'center', justifyContent: 'center' }]}>
+                <Text style={{ fontSize: 72 }}>{item.emoji || (isNewsletter ? '📰' : '📖')}</Text>
+              </View>
+            )}
           </View>
           
           <Text style={styles.coverTitle}>{item.title}</Text>

@@ -36,8 +36,8 @@ export interface Newsletter {
 }
 
 export function useCMS() {
-  const [ebooks, setEbooks] = useState<EBook[]>(EBOOKS as EBook[]);
-  const [newsletters, setNewsletters] = useState<Newsletter[]>(NEWSLETTERS as any[]);
+  const [ebooks, setEbooks] = useState<EBook[]>([...EBOOKS].reverse() as EBook[]);
+  const [newsletters, setNewsletters] = useState<Newsletter[]>([...NEWSLETTERS].reverse() as any[]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -73,8 +73,9 @@ export function useCMS() {
       if (ebooksRes.ok) {
         const ebooksData = await ebooksRes.json();
         if (Array.isArray(ebooksData)) {
-          setEbooks(ebooksData);
-          await AsyncStorage.setItem('cached_ebooks', JSON.stringify(ebooksData));
+          const sortedEbooks = [...ebooksData].reverse();
+          setEbooks(sortedEbooks);
+          await AsyncStorage.setItem('cached_ebooks', JSON.stringify(sortedEbooks));
         }
       }
 
@@ -83,8 +84,9 @@ export function useCMS() {
       if (newslettersRes.ok) {
         const newslettersData = await newslettersRes.json();
         if (Array.isArray(newslettersData)) {
-          setNewsletters(newslettersData);
-          await AsyncStorage.setItem('cached_newsletters', JSON.stringify(newslettersData));
+          const sortedNewsletters = [...newslettersData].reverse();
+          setNewsletters(sortedNewsletters);
+          await AsyncStorage.setItem('cached_newsletters', JSON.stringify(sortedNewsletters));
         }
       }
     } catch (error) {

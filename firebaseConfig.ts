@@ -4,12 +4,12 @@ import { initializeAuth, getReactNativePersistence, getAuth } from 'firebase/aut
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB5jfYVUFH8EhIFpWsWsaXHEHKT2Dzhyq4",
-  authDomain: "easy-finance-library.firebaseapp.com",
-  projectId: "easy-finance-library",
-  storageBucket: "easy-finance-library.firebasestorage.app",
-  messagingSenderId: "1080515464985",
-  appId: "1:1080515464985:web:d5917fc3ba6f117576bf88",
+  apiKey: "AIzaSyD3bMHPQXge3K6ypRSDrTiDiVF28OUINsI",
+  authDomain: "easyfinancelearning.firebaseapp.com",
+  projectId: "easyfinancelearning",
+  storageBucket: "easyfinancelearning.firebasestorage.app",
+  messagingSenderId: "822778405428",
+  appId: "1:822778405428:web:a84625a6546bcc01d4e061",
 };
 
 // Avoid initializing app twice during Metro hot-reload (HMR)

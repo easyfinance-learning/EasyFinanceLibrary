@@ -92,7 +92,13 @@ export default function EBooksScreen() {
           >
             {/* Book Cover */}
             <View style={styles.coverContainer}>
-              <Image source={{ uri: book.coverUrl }} style={styles.coverImage} />
+              {book.coverUrl && book.coverUrl.startsWith('http') ? (
+                <Image source={{ uri: book.coverUrl }} style={styles.coverImage} />
+              ) : (
+                <View style={[styles.coverImage, { backgroundColor: book.bg || '#EAF5EE', alignItems: 'center', justifyContent: 'center' }]}>
+                  <Text style={{ fontSize: 64 }}>{book.emoji || '📖'}</Text>
+                </View>
+              )}
               <View style={styles.badge}>
                 <Text style={styles.badgeText}>{book.tag.toUpperCase()}</Text>
               </View>

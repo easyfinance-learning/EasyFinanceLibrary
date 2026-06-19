@@ -89,7 +89,13 @@ export default function NewsletterScreen() {
             })}
           >
             {/* Left Thumbnail cover */}
-            <Image source={{ uri: item.coverUrl }} style={styles.thumbnailCover} />
+            {item.coverUrl && item.coverUrl.startsWith('http') ? (
+              <Image source={{ uri: item.coverUrl }} style={styles.thumbnailCover} />
+            ) : (
+              <View style={[styles.thumbnailCover, { backgroundColor: item.bg || '#EAF5EE', alignItems: 'center', justifyContent: 'center' }]}>
+                <Text style={{ fontSize: 32 }}>{item.emoji || '📰'}</Text>
+              </View>
+            )}
 
             {/* Middle: Info */}
             <View style={styles.cardInfo}>

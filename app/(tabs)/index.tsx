@@ -225,7 +225,13 @@ export default function HomeScreen() {
                       params: { id: book.id, type: 'ebook' }
                     })}
                   >
-                    <Image source={{ uri: book.coverUrl }} style={styles.searchResultCover} />
+                    {book.coverUrl && book.coverUrl.startsWith('http') ? (
+                      <Image source={{ uri: book.coverUrl }} style={styles.searchResultCover} />
+                    ) : (
+                      <View style={[styles.searchResultCover, { backgroundColor: book.bg || '#EAF5EE', alignItems: 'center', justifyContent: 'center' }]}>
+                        <Text style={{ fontSize: 24 }}>{book.emoji || '📖'}</Text>
+                      </View>
+                    )}
                     <View style={styles.searchResultInfo}>
                       <Text style={styles.searchResultName} numberOfLines={1}>{book.title}</Text>
                       <Text style={styles.searchResultDesc} numberOfLines={2}>{book.description}</Text>
@@ -249,7 +255,13 @@ export default function HomeScreen() {
                       params: { id: letter.id, type: 'newsletter' }
                     })}
                   >
-                    <Image source={{ uri: letter.coverUrl }} style={styles.searchResultCover} />
+                    {letter.coverUrl && letter.coverUrl.startsWith('http') ? (
+                      <Image source={{ uri: letter.coverUrl }} style={styles.searchResultCover} />
+                    ) : (
+                      <View style={[styles.searchResultCover, { backgroundColor: letter.bg || '#EAF5EE', alignItems: 'center', justifyContent: 'center' }]}>
+                        <Text style={{ fontSize: 24 }}>{letter.emoji || '📰'}</Text>
+                      </View>
+                    )}
                     <View style={styles.searchResultInfo}>
                       <Text style={styles.searchResultName} numberOfLines={1}>{letter.title} - {letter.issue}</Text>
                       <Text style={styles.searchResultDesc} numberOfLines={2}>{letter.description}</Text>
@@ -286,7 +298,7 @@ export default function HomeScreen() {
                   </View>
                 </View>
                 <View style={styles.continueRight}>
-                  {lastRead.coverUrl ? (
+                  {lastRead.coverUrl && lastRead.coverUrl.startsWith('http') ? (
                     <Image source={{ uri: lastRead.coverUrl }} style={styles.continueCover} />
                   ) : (
                     <View style={styles.continuePlaceholderCover}>
@@ -297,11 +309,19 @@ export default function HomeScreen() {
                     <View style={styles.progressBarBg}>
                       <View style={[
                         styles.progressBarFill, 
-                        { width: `${Math.min(100, Math.max(10, (lastRead.page / lastRead.total) * 100))}%` }
+                        {
+                          width: `${
+                            lastRead.total && !isNaN(lastRead.total) && lastRead.total > 0 && lastRead.page && !isNaN(lastRead.page)
+                              ? Math.min(100, Math.max(10, (lastRead.page / lastRead.total) * 100))
+                              : 10
+                          }%`
+                        }
                       ]} />
                     </View>
                     <Text style={styles.progressText}>
-                      {Math.round((lastRead.page / lastRead.total) * 100)}% complete
+                      {lastRead.total && !isNaN(lastRead.total) && lastRead.total > 0 && lastRead.page && !isNaN(lastRead.page)
+                        ? Math.round((lastRead.page / lastRead.total) * 100)
+                        : 0}% complete
                     </Text>
                   </View>
                 </View>
@@ -371,7 +391,13 @@ export default function HomeScreen() {
                     params: { id: item.id, type: 'ebook' }
                   })}
                 >
-                  <Image source={{ uri: item.coverUrl }} style={styles.ebookCardCover} />
+                  {item.coverUrl && item.coverUrl.startsWith('http') ? (
+                    <Image source={{ uri: item.coverUrl }} style={styles.ebookCardCover} />
+                  ) : (
+                    <View style={[styles.ebookCardCover, { backgroundColor: item.bg || '#EAF5EE', alignItems: 'center', justifyContent: 'center' }]}>
+                      <Text style={{ fontSize: 48 }}>{item.emoji || '📖'}</Text>
+                    </View>
+                  )}
                   <View style={styles.ebookCardDetails}>
                     <View style={styles.ebookCardTag}>
                       <Text style={styles.ebookCardTagText}>{item.tag.toUpperCase()}</Text>
@@ -406,7 +432,13 @@ export default function HomeScreen() {
                     params: { id: letter.id, type: 'newsletter' }
                   })}
                 >
-                  <Image source={{ uri: letter.coverUrl }} style={styles.newsletterItemCover} />
+                  {letter.coverUrl && letter.coverUrl.startsWith('http') ? (
+                    <Image source={{ uri: letter.coverUrl }} style={styles.newsletterItemCover} />
+                  ) : (
+                    <View style={[styles.newsletterItemCover, { backgroundColor: letter.bg || '#EAF5EE', alignItems: 'center', justifyContent: 'center' }]}>
+                      <Text style={{ fontSize: 24 }}>{letter.emoji || '📰'}</Text>
+                    </View>
+                  )}
                   <View style={styles.newsletterItemContent}>
                     <Text style={styles.newsletterItemTopic}>{letter.topic.toUpperCase()}</Text>
                     <Text style={styles.newsletterItemTitle} numberOfLines={1}>{letter.title}</Text>
