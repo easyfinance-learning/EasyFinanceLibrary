@@ -91,7 +91,7 @@ export default function HomeScreen() {
           type: 'ebook',
           title: ebooks[0].title,
           page: 1,
-          total: 5,
+          total: ebooks[0].pages || 5,
           coverUrl: ebooks[0].coverUrl,
         });
       }
