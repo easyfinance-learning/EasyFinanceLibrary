@@ -87,7 +87,7 @@ export default function ReaderScreen() {
   const pages = item
     ? (isNewsletter
         ? item.content.split('─────────────────────────').map(p => p.trim()).filter(Boolean)
-        : item.content.split(/(?:\r?\n)+(?=Chapter \d+)/).map(p => p.trim()).filter(Boolean))
+        : item.content.split(/(?:\r?\n)+(?=#? ?Chapter \d+)/).map(p => p.trim()).filter(Boolean))
     : [];
 
   const totalPages = pages.length;
@@ -316,10 +316,11 @@ export default function ReaderScreen() {
       const lines = text.split('\n');
       return lines[0].replace(/[📊💡📈🎯]/g, '').trim() || `Section ${idx + 1}`;
     } else {
-      // Find chapter header
-      const match = text.match(/Chapter \d+(?::[^\n]+)?/);
-      if (match && text.trim().startsWith(match[0])) {
-        return match[0].trim();
+      // Find chapter header in the first few lines
+      const firstLines = text.split('\n').slice(0, 3).join('\n');
+      const match = firstLines.match(/^#?\s*(Chapter \d+.*)$/m);
+      if (match) {
+        return match[1].trim();
       }
       return idx === 0 ? "Table of Contents" : `Chapter ${idx}`;
     }
