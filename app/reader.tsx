@@ -22,8 +22,15 @@ const { height } = Dimensions.get('window');
 
 const splitIntoSentences = (text: string) => {
   if (!text) return [];
+  // Clean markdown images completely: ![alt text](url)
+  let cleanedText = text.replace(/!\[.*?\]\(.*?\)/g, '');
   // Clean decorative lines and excessive symbols
-  let cleanedText = text.replace(/─{5,}/g, ''); // Remove long divider lines
+  cleanedText = cleanedText.replace(/─{5,}/g, ''); // Remove long divider lines
+  // Clean hash symbols from headings
+  cleanedText = cleanedText.replace(/#+/g, '');
+  // Clean markdown bold and italic formatting symbols
+  cleanedText = cleanedText.replace(/\*\*|__/g, '');
+  cleanedText = cleanedText.replace(/\*|_/g, '');
   
   // First, split by double newlines or single newlines to preserve paragraph boundaries
   const blocks = cleanedText.split(/\n+/);
