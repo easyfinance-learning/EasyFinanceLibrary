@@ -94,7 +94,7 @@ export default function ReaderScreen() {
   const pages = item
     ? (isNewsletter
         ? item.content.split('─────────────────────────').map(p => p.trim()).filter(Boolean)
-        : item.content.split(/(?:\r?\n)+(?=# Chapter \d+)/).map(p => p.trim()).filter(Boolean))
+        : item.content.split(/(?:\r?\n)+(?=# Chapter \d+|# Conclusion)/).map(p => p.trim()).filter(Boolean))
     : [];
 
   const totalPages = pages.length;
