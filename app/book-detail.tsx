@@ -69,7 +69,7 @@ export default function BookDetailScreen() {
           </View>
           
           <Text style={styles.coverTitle}>{item.title}</Text>
-          <Text style={styles.coverAuthor}>by {isNewsletter ? 'Easy Finance Editorial' : 'Easy Finance Advisors'}</Text>
+          <Text style={styles.coverAuthor}>by {isNewsletter ? 'Easy Finance Editorial' : 'Easy Finance'}</Text>
           
           {isNewsletter ? (
             <Text style={styles.metaLabel}>{(item as any).issue}  •  {(item as any).date}</Text>
@@ -107,10 +107,6 @@ export default function BookDetailScreen() {
               <Ionicons name="checkmark-circle" size={18} color={Theme.green.primary} style={styles.highlightIcon} />
               <Text style={styles.highlightText}>Practical steps to implement in your daily life</Text>
             </View>
-            <View style={styles.highlightRow}>
-              <Ionicons name="checkmark-circle" size={18} color={Theme.green.primary} style={styles.highlightIcon} />
-              <Text style={styles.highlightText}>Insights backed by SEBI-registered advisory standards</Text>
-            </View>
           </View>
 
           {/* Read Button */}
@@ -122,6 +118,19 @@ export default function BookDetailScreen() {
             <Ionicons name="book" size={20} color="#FFFFFF" style={{ marginRight: 8 }} />
             <Text style={styles.readBtnText}>Start Reading Now</Text>
           </TouchableOpacity>
+
+          {!isNewsletter && (
+            <View style={styles.disclaimerContainer}>
+              <Text style={styles.disclaimerTitle}>⚖️ DISCLAIMER</Text>
+              <Text style={styles.disclaimerText}>
+                This eBook is provided solely for educational and informational purposes. The content should not be construed as financial, investment, tax, legal, or professional advice. Readers should consult a qualified financial advisor, tax consultant, or other relevant professional before making any financial or investment decisions.
+                {"\n\n"}
+                All investments are subject to market risks. Past performance does not guarantee future results. While every effort has been made to ensure the accuracy of the information presented, Easy Finance makes no warranties regarding completeness, accuracy, or reliability.
+                {"\n\n"}
+                Easy Finance, its authors, publishers, affiliates, and contributors shall not be held liable for any direct, indirect, incidental, consequential, or financial losses arising from the use of this content. By reading this eBook, users acknowledge that all investment decisions are made at their own discretion and risk.
+              </Text>
+            </View>
+          )}
 
         </View>
       </ScrollView>
@@ -300,5 +309,26 @@ const styles = StyleSheet.create({
   errorBtnText: {
     color: '#FFFFFF',
     fontWeight: '800',
+  },
+  disclaimerContainer: {
+    marginTop: 24,
+    padding: 16,
+    backgroundColor: Theme.background.secondary,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: Theme.border,
+  },
+  disclaimerTitle: {
+    fontSize: 12,
+    fontWeight: '900',
+    color: Theme.text.primary,
+    marginBottom: 8,
+    letterSpacing: 0.5,
+  },
+  disclaimerText: {
+    fontSize: 11,
+    color: Theme.text.secondary,
+    lineHeight: 16,
+    textAlign: 'justify',
   },
 });

@@ -56,16 +56,7 @@ export default function ConsultationScreen() {
 
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
 
-        {/* ── Hero Card ── */}
-        <View style={styles.heroCard}>
-          <View style={styles.heroBadgeContainer}>
-            <Ionicons name="ribbon-outline" size={28} color={Theme.green.primary} />
-          </View>
-          <Text style={styles.heroTitle}>Free Mutual Fund{"\n"}Consultation</Text>
-          <Text style={styles.heroSub}>
-            Get personalized advice on SIP setup, mutual funds analysis, tax planning, and goal-based investing from our expert team.
-          </Text>
-        </View>
+        {/* ── Consultation Hero Card Removed ── */}
 
         {/* ── Quick Contact ── */}
         <Text style={styles.sectionTitle}>Quick Contact</Text>
@@ -87,21 +78,7 @@ export default function ConsultationScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* ── Why Us ── */}
-        <Text style={styles.sectionTitle}>Why Choose Easy Finance?</Text>
-        <View style={styles.whyCard}>
-          {[
-            { icon: 'shield-checkmark', color: Theme.green.primary, text: 'SEBI Registered Mutual Fund Distributor' },
-            { icon: 'trending-up', color: '#FF9F0A', text: 'Personalized growth & wealth optimization planning' },
-            { icon: 'lock-closed', color: '#BF5AF2', text: '100% confidential & no-obligation consultation' },
-            { icon: 'flash', color: '#64D2FF', text: 'Prompt expert response within 24 hours' },
-          ].map((item, i) => (
-            <View key={i} style={styles.whyRow}>
-              <Ionicons name={item.icon as any} size={20} color={item.color} style={styles.whyIcon} />
-              <Text style={styles.whyText}>{item.text}</Text>
-            </View>
-          ))}
-        </View>
+        {/* ── Why Choose Easy Finance Section Removed ── */}
 
         {/* ── Enquiry Form ── */}
         <Text style={styles.sectionTitle}>Send an Enquiry</Text>

@@ -170,7 +170,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   safe:            { flex: 1, backgroundColor: Theme.background.primary },
   topSection:      { backgroundColor: Theme.background.primary, alignItems: 'center', paddingTop: 40, paddingBottom: 32, paddingHorizontal: 24 },
-  logo:            { width: 180, height: 60, marginBottom: 8 },
+  logo:            { width: 270, height: 90, marginBottom: 8 },
   tagline:         { color: Theme.green.primary, fontSize: 12, fontWeight: '700', letterSpacing: 2, marginBottom: 20 },
   welcomeText:     { fontSize: 26, fontWeight: '900', color: Theme.text.primary, marginBottom: 6, textAlign: 'center' },
   subText:         { fontSize: 13, color: Theme.text.secondary, textAlign: 'center', lineHeight: 20 },

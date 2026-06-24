@@ -97,20 +97,7 @@ export default function ProfileScreen() {
       sub: 'Manage daily updates & recommendations',
       onPress: () => Alert.alert('Notifications', 'Notification settings coming soon!'),
     },
-    {
-      icon: 'shield-outline',
-      color: '#64D2FF',
-      label: 'Privacy Policy',
-      sub: 'Read how we protect your information',
-      onPress: () => Linking.openURL('https://www.easyfinance.in/privacy-policy'),
-    },
-    {
-      icon: 'document-text-outline',
-      color: '#FF9F0A',
-      label: 'Terms of Use',
-      sub: 'Check our rules and service guidelines',
-      onPress: () => Linking.openURL('https://www.easyfinance.in/terms'),
-    },
+
     {
       icon: 'star-outline',
       color: '#BF5AF2',

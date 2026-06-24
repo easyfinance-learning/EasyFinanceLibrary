@@ -93,7 +93,10 @@ export default function ReaderScreen() {
   // Split content into pages/chapters safely
   const pages = item
     ? (isNewsletter
-        ? [item.content]
+        ? [
+            item.content +
+            "\n\n─────────────────────────\n⚖️ DISCLAIMER\n\nThis publication is provided solely for educational and informational purposes. The content should not be construed as financial, investment, tax, legal, or professional advice. Readers should consult a qualified financial advisor, tax consultant, or other relevant professional before making any financial or investment decisions.\n\nAll investments are subject to market risks. Past performance does not guarantee future results. While every effort has been made to ensure the accuracy of the information presented, Easy Finance makes no warranties regarding completeness, accuracy, or reliability.\n\nEasy Finance, its authors, publishers, affiliates, and contributors shall not be held liable for any direct, indirect, incidental, consequential, or financial losses arising from the use of this content. By reading this content, users acknowledge that all investment decisions are made at their own discretion and risk."
+          ]
         : item.content.split(/(?:\r?\n)+(?=# Chapter\s*(?:-\s*)?\d+|# Conclusion)/).map(p => p.trim()).filter(Boolean))
     : [];
 

@@ -147,12 +147,6 @@ export default function HomeScreen() {
           </View>
         </View>
         <View style={styles.headerRight}>
-          <TouchableOpacity style={styles.notificationBtn} activeOpacity={0.7}>
-            <Ionicons name="notifications-outline" size={24} color={Theme.text.primary} />
-            <View style={styles.notificationBadge}>
-              <Text style={styles.notificationBadgeText}>3</Text>
-            </View>
-          </TouchableOpacity>
           <TouchableOpacity 
             style={styles.avatarBtn} 
             activeOpacity={0.7}
@@ -344,7 +338,7 @@ export default function HomeScreen() {
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={[styles.shortcutCard, { flex: 1.3 }]}
+                style={[styles.shortcutCard, { flex: 1.2 }]}
                 activeOpacity={0.8}
                 onPress={() => router.push('/(tabs)/newsletters')}
               >
@@ -356,7 +350,7 @@ export default function HomeScreen() {
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={[styles.shortcutCard, { flex: 0.9 }]}
+                style={[styles.shortcutCard, { flex: 1.0 }]}
                 activeOpacity={0.8}
                 onPress={() => router.push('/(tabs)/profile')}
               >
@@ -458,27 +452,7 @@ export default function HomeScreen() {
               ))}
             </View>
 
-            {/* ── Pro Premium Banner ── */}
-            <TouchableOpacity
-              style={styles.proBanner}
-              activeOpacity={0.9}
-              onPress={() => router.push('/(tabs)/consultation')}
-            >
-              <View style={styles.proBannerLeft}>
-                <View style={styles.proBadge}>
-                  <Text style={styles.proBadgeText}>LIMITED OFFER</Text>
-                </View>
-                <Text style={styles.proBannerTitle}>1-on-1 Financial Consultation</Text>
-                <Text style={styles.proBannerText}>
-                  Get a personalized wealth management roadmap from certified experts.
-                </Text>
-              </View>
-              <View style={styles.proBannerRight}>
-                <View style={styles.proIconCircle}>
-                  <Ionicons name="trending-up" size={28} color={Theme.green.primary} />
-                </View>
-              </View>
-            </TouchableOpacity>
+            {/* ── Pro Premium Banner Removed ── */}
 
             <View style={{ height: 40 }} />
           </>
@@ -535,8 +509,8 @@ const styles = StyleSheet.create({
     fontWeight: '900',
   },
   logoMascot: {
-    width: 112,
-    height: 112,
+    width: 134,
+    height: 134,
   },
   headerTextContainer: {
     flexDirection: 'column',
@@ -581,7 +555,9 @@ const styles = StyleSheet.create({
     backgroundColor: Theme.background.primary,
   },
   scrollContent: {
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingTop: 10,
+    paddingBottom: 20,
   },
   searchBox: {
     flexDirection: 'row',
@@ -813,8 +789,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Theme.border,
     borderRadius: 16,
-    padding: 14,
+    paddingVertical: 14,
+    paddingHorizontal: 8,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   shortcutIconContainer: {
     width: 40,
@@ -831,7 +809,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   shortcutLabel: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: '700',
     color: Theme.text.muted,
   },
